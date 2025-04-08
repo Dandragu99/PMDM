@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         //  asocia parte grafica y parte logica (this)
             // Aquí siempre hay que apuntar al elemento root, es importantísimos
-            // el elemento root en este caso es ConstraintLayout(el nodo superior)
+            // el elemento root en este caso es ConstraintLayout o LinearLayout(el nodo superior)
         setContentView(binding.root)
         //  después de esta línea lo grafico y lo logico están juntos
         // solamnete detrás de esta línea (imprescindible que lo entendamos bien)
