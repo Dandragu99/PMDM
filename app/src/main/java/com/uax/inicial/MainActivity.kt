@@ -5,6 +5,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.snackbar.Snackbar
 import com.uax.inicial.databinding.ActivityMainBinding
 
 // PARTE LOGICA DE LA PANTALLA --> ACTIVITY
@@ -29,5 +30,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         //  después de esta línea lo grafico y lo logico están juntos
         // solamnete detrás de esta línea (imprescindible que lo entendamos bien)
+
+        // ¿como trabajo con el botón que he creado en la parte gráfica. Pues inmediatamente debajo
+        // de todo esto
+        binding.botonPulsar.setOnClickListener() {
+            //Aquí haré lo que pasa cuando se pulsa
+            Snackbar.make(binding.root,
+                "Enhorabuena, completada la primera App",
+                Snackbar.LENGTH_SHORT
+            ).show()
+        }
     }
 }

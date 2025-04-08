@@ -1,27 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- todos los elementos se situan lineales o bien de izquierda a derecha o bien de arriba abajo -->
+<!-- orientation: la podemos poner veritcal u horizontal -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     tools:context=".MainActivity">
+    <!-- wrap_content: ocupa solo lo que necesitas -->
+    <!-- match_content: ocupa lo minimo pegado al padre(pegado al Linear) -->
+    <!-- text-size: cambia el tamaño del texto lo podemos poner en sp,dp,px -->
+    <!-- gravity: para situarlo al centro-->
 
     <TextView
+        android:gravity="center"
+        android:textSize="30sp"
+        android:text="mi primer app de Android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <!-- El boton muy parecido a lo anterior -->
+    <Button
+        android:id="@+id/botonPulsar"
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Pulsar"
+        />
+    <!-- margin-top: para separar por arriba -->
+    <!-- lo normal no es que lo cierre sino que lo (auto cierre solo poner />)-->
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="172dp"
-        android:layout_height="117dp"
-        android:text="Button"
-        tools:layout_editor_absoluteX="140dp"
-        tools:layout_editor_absoluteY="86dp" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Importante: Si yo lo que quiero es controlar el botón lo que debo hacer
+     es llevarme el botón a la parte lógica para ello hay que darle un atributo ID "@+id" siempre-->
+</LinearLayout>

@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.uax.inicial"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.uax.inicial"
