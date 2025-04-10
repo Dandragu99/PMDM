@@ -1,19 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Recuerda que a todo el constraint se le puede dar un margen con layot margin -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="24dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <!-- Si trabajo con imageView siempre hay que poner el id -->
+    <!-- Luego, si necesito centrar una imagen lo mejor es utilizar las restricciones-->
+    <!-- si quiero añadir una imagen la añado desde el src y luego drawable-->
+
+    <ImageView
+        android:id="@+id/imagenLogin"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/login"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <!-- Coomo hago un campo para recoger datos -->
+    <!-- Ponemos 0dp cuando queramos que se mantenga la restriccion -->
+
+    <EditText
+        android:id="@+id/editCorreo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:hint="introduce tu nombre"
+        app:layout_constraintEnd_toEndOf="@+id/imagenLogin"
+        app:layout_constraintStart_toStartOf="@+id/imagenLogin"
+        app:layout_constraintTop_toBottomOf="@+id/imagenLogin" />
+
+    <!-- El hint es otro de los atributos importantes ejemplo: -->
+    <!-- Aunque esto esté bien lo mejor es poner todas las palabras en el string.xml
+     para poderlo insternacionalizar-->
+
+
+    <EditText
+        android:id="@+id/editPass"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:hint="introduce tus pass"
+        app:layout_constraintEnd_toEndOf="@+id/editCorreo"
+        app:layout_constraintStart_toStartOf="@+id/editCorreo"
+        app:layout_constraintTop_toBottomOf="@+id/editCorreo" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@+id/editPass"
+        app:layout_constraintTop_toBottomOf="@+id/editPass" />
+
+    <Button
+        android:id="@+id/btnLImpiar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Limpiar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editPass"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/editPass" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50" />
+
+    <!-- Recurda que si tienes varios botones pudes usar una guideline
+     para centrarlos mejor y así lo puedes restringir con la guide-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
