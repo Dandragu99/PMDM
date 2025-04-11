@@ -38,10 +38,37 @@ class MainActivity : AppCompatActivity(), OnClickListener {
             binding.btnLogin.id->{ // Si es así haré esto
                 // intent - origen - destino
                 val intent: Intent = Intent(applicationContext, SecondActivity::class.java)
+                // Quiero que la pantalla secundaria me de la bienvenida
+                val bundle: Bundle = Bundle() // esto es como una caja
+                bundle.putString("correo",binding.editCorreo.text.toString()) // acabo de meter un dato en la caja
+
+                // Después de crear el serializable volvemos al main
+                bundle.putSerializable(
+                    "objeto"
+                    ,Usuario(binding.editCorreo.text.toString(), binding.editPass.text.toString())
+                )
+
+                intent.putExtra("datos", bundle) // el intent va acompañado de datos
+                // Luego, en el destino esos datos los tengo que recuperar (secondActivity)
+                startActivity(intent)
             }
             binding.btnLImpiar.id->{ // Si no es así haré esto otro
-
+                limpiar()
             }
         }
     }
+    fun limpiar(){
+        binding.editCorreo.text.clear()
+        binding.editPass.text.clear()
+    }
+
+    // podemos modificar el onRestart y los demás métodos si lo necesitamos
+    // con el override reescribimos los métos y podemos colocar las funciones que creemos
+    override fun onRestart() {
+        super.onRestart()
+        limpiar()
+    }
 }
+
+// MA onCreate - onStart - onResume - XXXX - onPause -onStop - onRestart -onResume - XXXX
+// MA onCreate - onStart - onResume - XXXX - onPause -onStop - onDestroy
