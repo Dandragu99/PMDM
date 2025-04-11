@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         when(v?.id){ // el id del que ha sido pulsado es el id del boton login?
             binding.btnLogin.id->{ // Si es así haré esto
                 // intent - origen - destino
-                val intent: Intent = Intent(applicationContext)
+                val intent: Intent = Intent(applicationContext, SecondActivity::class.java)
             }
             binding.btnLImpiar.id->{ // Si no es así haré esto otro
 
