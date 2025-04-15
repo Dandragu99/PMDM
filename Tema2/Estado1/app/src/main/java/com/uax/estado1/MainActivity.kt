@@ -13,11 +13,21 @@ import com.uax.estado1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), OnClickListener, OnCheckedChangeListener {
     private lateinit var binding: ActivityMainBinding
+
+    // Creo el contador
+    private var contador: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        // Aquí tengo que recuperar los datos que se han guardado(OnSave)
+        // Tengo que recuperar el contador
+
+        contador = savedInstanceState?.getInt("contador") ?: 0 // Para que no sea nulo ponemos el operador elvis
+        binding.textPalabras.text = contador.toString()
+
 
         // Empezamos con la parte lógica y lo primero es llamar al escuchador(Listener)
         binding.btnAnadir.setOnClickListener(this)
@@ -38,6 +48,14 @@ class MainActivity : AppCompatActivity(), OnClickListener, OnCheckedChangeListen
             // ¿Ha sido este quién ha pulsado el botón?
             binding.btnAnadir.id->{
                 // Si es así añadir 1 al contador
+                if (binding.editText.text.isNotEmpty()){
+                    contador++
+                    binding.textPalabras.text = contador.toString()
+                    // Con esta función vacío el contendio
+                    binding.editText.text.clear()
+                }else{
+                    // aquí puedo poner un aviso
+                }
             }
         }
 
@@ -72,5 +90,11 @@ class MainActivity : AppCompatActivity(), OnClickListener, OnCheckedChangeListen
 
             }
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        // ejecutado justo antes de la ejecución del onDestroy.
+        outState.putInt("contador", contador)
     }
 }
