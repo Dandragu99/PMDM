@@ -5,6 +5,8 @@ Este es el repositorio oficial de la asignatura **Programación Multimedia y Dis
 ---
 
 ![Mockup de teléfono móvil](images/telefono.jpg)
+<img src="images/telefono.jpg" width="200"/>
+
 
 ---
 
