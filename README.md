@@ -4,7 +4,7 @@ Este es el repositorio oficial de la asignatura **Programación Multimedia y Dis
 
 ---
 
-![Mockup de teléfono móvil](images/telefono.png)
+![Mockup de teléfono móvil](images/telefono.jpg)
 
 ---
 
