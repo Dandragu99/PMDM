@@ -35,6 +35,8 @@ class MainActivity : AppCompatActivity(), OnClickListener, OnCheckedChangeListen
         // ¿Por que no puedo poner this? -> Pues porque no está implementado en la interfaz.
         // HAY QUE IMPLEMENTARLO ARRIBA y ya nos deja de dar error.
         binding.CheckEdicion.setOnCheckedChangeListener(this)
+        binding.btnReset?.setOnClickListener(this) // ¿Por que me da fallo? -> Porque solo existe al girar
+        // Por lo tanto hay que poner ? para decirle que se ejecute solo cuando el botón esté
 
 
 
@@ -57,9 +59,11 @@ class MainActivity : AppCompatActivity(), OnClickListener, OnCheckedChangeListen
                     // aquí puedo poner un aviso
                 }
             }
+            binding.btnReset?.id->{
+                contador =0
+                binding.textPalabras.text = contador.toString()
+            }
         }
-
-
     }
 
     // Aquí ya tenemos implementado el método onCheckedChange
