@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.uax.inicial"
+    namespace = "com.uax.listas"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.uax.inicial"
+        applicationId = "com.uax.listas"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
