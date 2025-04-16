@@ -10,7 +10,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
+
+
     <!-- wrap_content: ocupa solo lo que necesitas -->
     <!-- match_content: ocupa lo minimo pegado al padre(pegado al Linear) -->
     <!-- text-size: cambia el tamaño del texto lo podemos poner en sp,dp,px -->

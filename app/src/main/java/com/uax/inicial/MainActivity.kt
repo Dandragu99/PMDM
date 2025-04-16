@@ -3,10 +3,8 @@ package com.uax.inicial
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.snackbar.Snackbar
-import com.uax.inicial.databinding.ActivityMainBinding
+import com.uax.listas.databinding.ActivityMainBinding
 
 // PARTE LOGICA DE LA PANTALLA --> ACTIVITY
 
