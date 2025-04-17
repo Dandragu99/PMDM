@@ -23,12 +23,7 @@ class MainActivity : AppCompatActivity(), OnClickListener, OnItemSelectedListene
         // Primero como siempre poner el listener en this
         binding.btnEnviar.setOnClickListener(this)
         // Forma más sencilla aunque no la más correcta
-        binding.spinnerHabilitado.onItemSelectedListener(this)
-
-
-
-
-
+        binding.spinnerHabilitado.onItemSelectedListener = this
 
         // this // da error. Que debería pasar para que funcione - Pues implementando al interfaz
         // Como tengo dos métodos esto no sería lo mejor sino que sería igualarlo a un objeto
@@ -52,19 +47,46 @@ class MainActivity : AppCompatActivity(), OnClickListener, OnItemSelectedListene
         */
 
 
-
-
-
-
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
+            // ¿Este ha sido el botón que ha sido pulsado?
             binding.btnEnviar.id -> {
+                // Pues hago esto
                 val seleccion = binding.spinnerHabilitado.selectedItem.toString()
                 Snackbar.make(binding.root, "La seleccion es $seleccion", Snackbar.LENGTH_SHORT).show()
             }
         }
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        // Se va a ejecutar cuando despliegue y cambier la seleccion
+        // AdapterView del parent es quien ha provocado el evento
+        when(parent?.id){
+            binding.spinnerHabilitado.id -> {
+                val seleccion = parent.adapter.getItem(position).toString()
+                /*Snackbar.make(binding.root, "La seleccion es $seleccion", Snackbar.LENGTH_SHORT).show()*/
+
+                if (position == 1){
+                    binding.btnEnviar.isEnabled = true
+                }else if (position == 2){
+                    binding.btnEnviar.isEnabled = false
+                }
+
+                binding.spinnerHabilitado.setSelection(position)
+
+            }
+
+            // el segundo parámetro es un número con el que puedes indicar la posición del item
+
+
+        }
+
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        // Se va a ejecutar cuando no haga nada
     }
 
 
@@ -72,13 +94,7 @@ class MainActivity : AppCompatActivity(), OnClickListener, OnItemSelectedListene
 
     // Primer método se va a ejecutar cuando yo despliegue y cambie la selección
 
-    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
-    }
-    // Segundo método se va a ejecutar cuando yo toque pero no cambie la selección
-    override fun onNothingSelected(parent: AdapterView<*>?) {
-
-    }
 
 
 }
