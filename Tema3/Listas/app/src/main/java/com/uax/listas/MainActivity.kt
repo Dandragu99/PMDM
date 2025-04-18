@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity(), OnClickListener, OnItemSelectedListene
     //Para poner distintos datos en el spinner tengo que hacer una variable con los distintos datos a seleccionar
     private lateinit var listaCiclos: ArrayList<CharSequence> // Siempre tiene que ser CharSequence nunca Strings
     // Luego el adaptador lo tengo que tipar con la misma lista de datos
-    private lateinit var adapter: ArrayAdapter<CharSequence>  // Es decir un CharSequence
+    private lateinit var adapterCiclos: ArrayAdapter<CharSequence>  // Es decir un CharSequence
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -72,8 +72,10 @@ class MainActivity : AppCompatActivity(), OnClickListener, OnItemSelectedListene
         // 1-> el contexto : applicationctx
         // 2-> Como se muestran las filas -> utilizaremos uno de Android R.
         // 3-> Lista
-        adapter = ArrayAdapter(applicationContext,android.R.layout.simple_spinner_item, listaCiclos)// para la vista sencilla
-
+        adapterCiclos = ArrayAdapter(applicationContext,android.R.layout.simple_spinner_item, listaCiclos)// para la vista sencilla
+        adapterCiclos.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        // ¿Como junto lo gráfico y lo lógico?
+        binding.spinnerHabilitado.adapter = adapterCiclos
     }
 
     override fun onClick(v: View?) {
@@ -82,7 +84,10 @@ class MainActivity : AppCompatActivity(), OnClickListener, OnItemSelectedListene
             binding.btnEnviar.id -> {
                 // Pues hago esto
                 val seleccion = binding.spinnerHabilitado.selectedItem.toString()
-                Snackbar.make(binding.root, "La seleccion es $seleccion", Snackbar.LENGTH_SHORT).show()
+               /* Snackbar.make(binding.root, "La seleccion es $seleccion", Snackbar.LENGTH_SHORT).show()*/
+                val ciclo = binding.editCiclo.text.toString()
+                listaCiclos.add(ciclo)
+                adapterCiclos.notifyDataSetChanged()
             }
         }
     }

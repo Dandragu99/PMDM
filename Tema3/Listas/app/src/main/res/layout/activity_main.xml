@@ -29,6 +29,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerHabilitado" />
 
+    <EditText
+        android:id="@+id/editCiclo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Por favor introduce el ciclo"
+        app:layout_constraintBottom_toTopOf="@+id/btnEnviar"
+        app:layout_constraintEnd_toEndOf="@+id/btnEnviar"
+        app:layout_constraintStart_toStartOf="@+id/btnEnviar" />
+
     <Button
         android:id="@+id/btnEnviar"
         android:layout_width="match_parent"
