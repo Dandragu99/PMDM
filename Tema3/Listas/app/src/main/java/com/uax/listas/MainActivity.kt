@@ -6,6 +6,7 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.ArrayAdapter
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,11 +16,21 @@ import com.uax.listas.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), OnClickListener, OnItemSelectedListener {
     private lateinit var binding: ActivityMainBinding
+    //Para poner distintos datos en el spinner tengo que hacer una variable con los distintos datos a seleccionar
+    private lateinit var listaCiclos: ArrayList<CharSequence> // Siempre tiene que ser CharSequence nunca Strings
+    // Luego el adaptador lo tengo que tipar con la misma lista de datos
+    private lateinit var adapter: ArrayAdapter<CharSequence>  // Es decir un CharSequence
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
+        // ¡RECUERDA! -> TOOD LO QUE DECLARO COMO LATEINIT LO TENGO QUER INICIALLIZAR AQUÍ
 
         setContentView(binding.root)
+        // Voy a crear un método que se llamará instancias
+        instancias()
+
+
         // Primero como siempre poner el listener en this
         binding.btnEnviar.setOnClickListener(this)
         // Forma más sencilla aunque no la más correcta
@@ -46,6 +57,22 @@ class MainActivity : AppCompatActivity(), OnClickListener, OnItemSelectedListene
         // Luego, poner el item selected listener -> configurado mediante propiedad.
         */
 
+
+    }
+
+    private fun instancias() {
+        listaCiclos = arrayListOf("DAM","DAW")
+        /* Podría ser así también
+        * listaCiclos = ArrayList()
+        listaCiclos.add("DAW")
+        listaCiclos.add("DAM")
+        * */
+
+        // ADAPTADOR -> recibe 3 parámetros
+        // 1-> el contexto : applicationctx
+        // 2-> Como se muestran las filas -> utilizaremos uno de Android R.
+        // 3-> Lista
+        adapter = ArrayAdapter(applicationContext,android.R.layout.simple_spinner_item, listaCiclos)// para la vista sencilla
 
     }
 
