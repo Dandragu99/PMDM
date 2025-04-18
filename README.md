@@ -19,4 +19,4 @@ Este es el repositorio oficial de la asignatura **Programación Multimedia y Dis
 ## Instalación
 
 Clona este repositorio:
-git clone https://github.com/dandragu99/PMDM.git
+git clone https://github.com/Dandragu99/PMDM.git
