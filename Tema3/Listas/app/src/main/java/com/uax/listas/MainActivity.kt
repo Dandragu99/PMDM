@@ -33,6 +33,8 @@ class MainActivity : AppCompatActivity(), OnClickListener, OnItemSelectedListene
 
         // Primero como siempre poner el listener en this
         binding.btnEnviar.setOnClickListener(this)
+        binding.btnBorrar.setOnClickListener(this)
+
         // Forma más sencilla aunque no la más correcta
         binding.spinnerHabilitado.onItemSelectedListener = this
 
@@ -56,6 +58,8 @@ class MainActivity : AppCompatActivity(), OnClickListener, OnItemSelectedListene
         }
         // Luego, poner el item selected listener -> configurado mediante propiedad.
         */
+        binding.spinnerCiclos.onItemSelectedListener = this
+
 
 
     }
@@ -87,6 +91,12 @@ class MainActivity : AppCompatActivity(), OnClickListener, OnItemSelectedListene
                /* Snackbar.make(binding.root, "La seleccion es $seleccion", Snackbar.LENGTH_SHORT).show()*/
                 val ciclo = binding.editCiclo.text.toString()
                 listaCiclos.add(ciclo)
+                adapterCiclos.notifyDataSetChanged() // Esto es obligtorio siempre que haya cambios
+            }
+            binding.btnBorrar.id ->{
+                // De la lista de ciclos quiero borrar. Lo que quiero borrar es un elemento de la lista que es de tipo
+                listaCiclos.remove(binding.editCiclo.text.toString())
+                // Y luego, al adaptador le indico que han cambiado cosas
                 adapterCiclos.notifyDataSetChanged()
             }
         }
@@ -111,6 +121,10 @@ class MainActivity : AppCompatActivity(), OnClickListener, OnItemSelectedListene
             }
 
             // el segundo parámetro es un número con el que puedes indicar la posición del item
+            binding.spinnerCiclos.id ->{
+                val seleccion = adapterCiclos.getItem(position)
+                binding.textoCiclo.text = seleccion.toString()
+            }
 
 
         }

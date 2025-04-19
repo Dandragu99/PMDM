@@ -38,6 +38,16 @@
         app:layout_constraintEnd_toEndOf="@+id/btnEnviar"
         app:layout_constraintStart_toStartOf="@+id/btnEnviar" />
 
+    <TextView
+        android:textSize="50sp"
+        android:id="@+id/textoCiclo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/editCiclo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCiclos" />
+
     <Button
         android:id="@+id/btnEnviar"
         android:layout_width="match_parent"
@@ -45,6 +55,14 @@
         android:text="Enviar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnBorrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Borrar"
+        app:layout_constraintBottom_toTopOf="@+id/editCiclo"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
