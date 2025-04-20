@@ -29,7 +29,7 @@ class DBHelper(
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        // Ejecutaré lo que diga mis ubida de versión
+        // Ejecutaré lo que diga mi subida de versión
     }
 }
 

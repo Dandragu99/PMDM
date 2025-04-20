@@ -39,7 +39,11 @@ class MainActivity : AppCompatActivity(), OnClickListener {
                 userDAO.insertUser(User("Dan",24))
             }
             binding.btnActualizar.id ->{}
-            binding.btnSeleccionar.id ->{}
+            binding.btnSeleccionar.id ->{
+                // Aquí me creo un dao para poder verlo
+                val userDAO = UserDAO(applicationContext)
+                binding.textView.text = userDAO.getUsers().toString()
+            }
         }
     }
 }
