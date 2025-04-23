@@ -32,13 +32,19 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
     override fun onClick(v: View?) {
         when(v?.id){
-            binding.btnBorrar.id ->{}
+            binding.btnBorrar.id ->{
+                val userDAO = UserDAO(applicationContext)
+                userDAO.deleteUser("Dani")
+            }
             binding.btnInsertar.id ->{
                 // Con esto vamos a ver que cuando pulso el botón inserto un usuario
                 val userDAO = UserDAO(applicationContext)
-                userDAO.insertUser(User("Dan",24))
+                userDAO.insertUser(User("Dani",24))
             }
-            binding.btnActualizar.id ->{}
+            binding.btnActualizar.id ->{
+                val userDAO = UserDAO(applicationContext)
+                userDAO.updateUser("Dani")
+            }
             binding.btnSeleccionar.id ->{
                 // Aquí me creo un dao para poder verlo
                 val userDAO = UserDAO(applicationContext)

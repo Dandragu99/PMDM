@@ -45,7 +45,7 @@ class UserDAO(var context:Context) {
         // Me creo la base de datos, en modo escritura(wirtable) porque quiero escribir para borrar
         /*DELETE FROM usuario WHERE adads =?
         * */
-        database.delete("users","name=?", arrayOf(name))
+        database.delete("user","name=?", arrayOf(name))
     }
     fun updateUser(name: String) {
         val database: SQLiteDatabase = DBHelper(context, "users_db", null, 1).writableDatabase
@@ -53,13 +53,13 @@ class UserDAO(var context:Context) {
         val content: ContentValues = ContentValues()
         content.put("name","NombreNuevo")
         // UPDATE user SET nombre = NombreNuevo WHERE name = Dani
-        database.update("users",content,"name=?", arrayOf(name))
+        database.update("user",content,"name=?", arrayOf(name))
     }
-    fun getUsers(){
+    fun getUsers(): Int {
         // Este método me pide los usuarios por los tanto los lee(readable)
         val database: SQLiteDatabase = DBHelper(context,"users_db",null,1).readableDatabase
         val cursor: Cursor =
-            database.query("users", arrayOf("name","age"),null,null,null,null,null)
+            database.query("user", arrayOf("id","name","age"),null,null,null,null,null)
         var contador = 0 // ¿Que quieres sacar también el número de resultados? Pues haces un contador
         // Aquí tengo varios resultados y como leo estos resultados uno por uno. Siguiente, siguiente
         //       v
@@ -68,17 +68,17 @@ class UserDAO(var context:Context) {
         // Mientras haya siguientes es decir,
         while (cursor.moveToNext()) { // muevete al siguiente
             contador++ // Y cada vez que pasas por el contador le incrementas 1
-            val name =
-                cursor.getString(cursor.getColumnIndexOrThrow("name")) // no es muy normal saberse la posición del resultado de la query
+            val name = cursor.getString(cursor.getColumnIndexOrThrow("name"))
+            // no es muy normal saberse la posición del resultado de la query
             // por eso se usa getColumnIndexThrow
             // Que quieres sacar los años también
             val age = cursor.getInt(cursor.getColumnIndexOrThrow("age"))
+            val id = cursor.getInt(cursor.getColumnIndexOrThrow("id"))
             // Vamos a sacarlo en un Log.v solo para verlo
-            Log.v(
-                "database_users",
-                "Name:$name Age: $age"
-            ) // Esto es solo para verlo a través del LogCat
+            Log.v("database_users", "ID: ${id.toString()} Name: $name Age: $age") // Esto es solo para verlo a través del LogCat
 
+            // Esto se suele utilizar como la parte lógica de la base de datos.¿Como gestionamos la base de datos?
+            // Pues con DBeaver -> Con el archivito que está en el móvil y este programa podemos gestionar la BBDD
         }
         return contador
     }
