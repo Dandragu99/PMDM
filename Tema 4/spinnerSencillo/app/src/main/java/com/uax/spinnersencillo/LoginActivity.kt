@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.uax.spinnersencillo.databinding.ActivityLoginBinding
 import com.uax.spinnersencillo.databinding.ActivityMainBinding
+import com.uax.spinnersencillo.model.User
 
 class LoginActivity : AppCompatActivity(),OnClickListener {
     lateinit var binding: ActivityLoginBinding
@@ -41,9 +42,45 @@ class LoginActivity : AppCompatActivity(),OnClickListener {
                 // Paso 3:
                 // Lo siguiente que haremos es arrancar el intent
                 //startActivity(intent)
+
+
+
+                // Paso 5:Para pasar datos entre las activities necesitaremos objetos de tipo Bundle
+                val bundle: Bundle = Bundle()
+
+            /*    //Paso 6: Ponemos mail y el dato que queremos poner en este caso binding.correo.text y siempre toString() para cuando hablamos de EditText
+                bundle.putString("mail", binding.correo.text.toString())
+                bundle.putString("pass", binding.contrsenia.text.toString())
+                -->
+             */
+                // Paso 7:Ahora que tenemos los bundle definidos lo que haremos es meter dentro del intent el bundle o los bundle creados.
+                intent.putExtra("datos",bundle)
+                // Y finalmente en el MainActivity lo que tendremos que hacer es recoger el dato
+
+            /* --> Paso 13:  Como hemos creado un package model y creado una clase User con una interfaz serializable
+            ya no nos hace falta  poner por separado los bundle sino que los podemos poner en conjunto
+            *
+            * */
+                bundle.putSerializable("user",
+                    User(binding.correo.text.toString(),binding.contrsenia.text.toString())
+                )
+
+
+
+
+
+
+
+
+
+
+
+
             }
             binding.btnRegister.id ->{
                 intent = Intent(applicationContext, registerActivity::class.java)
+                // startActivity(intent)
+
 
             }
         }
