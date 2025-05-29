@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">spinnerSencillo</string>
+    <string-array name="perfiles">
+        <item>Usuario</item>
+        <item>Inivtado</item>
+        <item>Administrador</item>
+    </string-array>
 </resources>
