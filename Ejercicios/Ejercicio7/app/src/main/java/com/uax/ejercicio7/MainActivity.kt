@@ -47,8 +47,15 @@ class MainActivity : AppCompatActivity(), OnClickListener {
                     if (mediaTotal < 5){
                         Snackbar.make(binding.root,"Suspendido",Snackbar.LENGTH_SHORT).show()
                     }else{
+                        // inicializo el intent para le cambio de pantallas. Creo el bundle par guardar información
                         val intent = Intent(applicationContext,SecondActivity::class.java)
+                        val bundle = Bundle()
+                        // Meto en el intent los datos que quiero pasar
                         intent.putExtra("media",mediaTotal)
+                        intent.putExtra("examen",examen)
+                        // Meto el bundle para poder recuperarlo más adelante
+                        intent.putExtras(bundle)
+                        // inicio el intent
                         startActivity(intent)
                     }
                 }
